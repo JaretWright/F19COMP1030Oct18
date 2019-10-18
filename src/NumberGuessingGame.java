@@ -5,7 +5,6 @@ public class NumberGuessingGame {
     public static void main(String[] args)
     {
         //Objects used for reading from the keyboard and creating random numbers
-        Scanner keyboard = new Scanner(System.in);
         SecureRandom rng = new SecureRandom();
 
         int userGuessCount = 0;
@@ -14,7 +13,6 @@ public class NumberGuessingGame {
         int userGuess = 0;               //initial value outside the range 1-10
 
         do{
-            System.out.printf("Enter your guess (1-10): ");
             userGuess = getValidInput();  //create a method to ensure a # 1-10 is returned
             userGuessCount++;
 
@@ -26,6 +24,31 @@ public class NumberGuessingGame {
         } while (userGuess != compNum);
 
         System.out.printf("You guessed the number in %d guesses", userGuessCount);
+    }
+
+    /**
+     * This method will ask the user to enter a number 1-10.  It will
+     * keep asking for a valid number until one is entered
+     */
+    public static int getValidInput()
+    {
+        Scanner keyboard = new Scanner(System.in);
+        int userGuess =0;
+
+        while (userGuess < 1 || userGuess > 10)
+        {
+            System.out.printf("You must enter a number between 1 and 10: ");
+            try {
+                userGuess = keyboard.nextInt();
+            }
+            catch (Exception e)
+            {
+                System.out.printf("Only integers 1-10 are valid!");
+                keyboard.nextLine();  //clear the buffer
+                userGuess = 0;
+            }
+        }
+        return userGuess;
     }
 
 }
