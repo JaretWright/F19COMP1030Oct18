@@ -37,7 +37,7 @@ public class NumberGuessingGame {
 
         while (userGuess < 1 || userGuess > 10)
         {
-            System.out.printf("You must enter a number between 1 and 10: ");
+            System.out.printf("Enter a guess between 1 and 10: ");
             try {
                 userGuess = keyboard.nextInt();
             }
